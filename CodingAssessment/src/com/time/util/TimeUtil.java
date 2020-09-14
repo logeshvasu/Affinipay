@@ -92,8 +92,8 @@ public final class TimeUtil {
      * add MinutesToTime(12:00 AM, -60) = 11:00 PM
      */
     public static String addMinutesToTime(String time, int addMinutes) {
-        // parse the minutes from input time
-        int currentMinutes = parseMinutes(time);
+        // convert the time hrs to minutes
+        int currentMinutes = convertTimeToMinutes(time);
         // add current time and input minutes
         int totalMinutes = addMinutes(currentMinutes, addMinutes);
         // convert result minutes into AM|PM time format
@@ -101,13 +101,13 @@ public final class TimeUtil {
     }
 
     /**
-     * Parse Minute from the given Time Format
+     * Convert given time format to minutes
      * @param time input time string hh:mm [AM|PM] format
      * @return minutes parsed from the time format
-     * Example: parseMinutes(12:00 AM) = 0
-     * parseMinutes(12:00 PM) = 720
+     * Example: convertTimeToMinutes(12:00 AM) = 0
+     * convertTimeToMinutes(12:00 PM) = 720
      */
-    public static int parseMinutes(String time) {
+    public static int convertTimeToMinutes(String time) {
         // split the string by colon, gives Hours, minutes + AM|PM
         String[] splitByColon = time.split(COLON);
         // get the hours value
